@@ -1,0 +1,18 @@
+{% extends '_base.html'%}
+
+{%block page_title%}detail{%endblock%}
+
+{%block content%}
+    {% if product.image %}
+        <img src="{{product.image.url}}">
+    {%endif%}
+    <h1>{{product.title}}</h1>
+    <td> <audio controls >
+        <source src=" {% if product.recored %} {{ product.recored.url }} {% endif %}" type="audio/wav">
+        Your browser does not support the audio element.
+      </audio> 
+    <p>{{product.description}}</p>
+    <div>{{product.price}}</div>
+    <div>{{product.created}}</div>
+
+{%endblock%}

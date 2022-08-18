@@ -1,0 +1,27 @@
+{% extends '_base.html'%}
+
+{%block page_title%}list{%endblock%}
+
+{%block content%}
+    
+    {% for product in products %}
+        <div>
+            {% if product.image %}
+                <a href="{{product.get_absolute_url}}">
+                <img src="{{product.image.url}}">
+                </a>
+            {%endif%}
+        </div>
+        <h1>{{product.title}}</h1>
+        <td> <audio controls >
+            <source src=" {% if product.recored %} {{ product.recored.url }} {% endif %}" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio> 
+        <p>{{product.description}}</p>
+        <div>{{product.price}}</div>
+        <div>{{product.created}}</div>
+        
+        <hr>
+    {% endfor %}
+    <a href="{% url 'product_create' %}">ثبت آگهی</a>
+{%endblock%}
